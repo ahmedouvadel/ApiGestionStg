@@ -27,15 +27,25 @@ public class DirectionImp implements IDirection {
         return directionRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found"));
     }
-
     @Override
-    public void updateDirection(Long id, Direction direction) {
-        Direction direction1 = directionRepository.findById(id).get();
+    public Direction updateDirection(Long id, Direction direction) {
+        Direction existingDirection = directionRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Fund"));
 
-        direction1.setNomdirection(direction1.getNomdirection());
+        existingDirection.setNomdirection(direction.getNomdirection()); // Update the field
 
-        directionRepository.save(direction1);
+        return directionRepository.save(existingDirection); // Save and return the updated entity
     }
+
+   /** @Override
+    public void updateDirection(Long id, Direction direction) {
+        Direction updateDirection = directionRepository.findById(id).get();
+
+        updateDirection.setNomdirection(updateDirection.getNomdirection());
+
+        directionRepository.save(updateDirection);
+    } */
+
     @Override
     public void deleteDirection(Long id) { directionRepository.deleteById(id);
     }

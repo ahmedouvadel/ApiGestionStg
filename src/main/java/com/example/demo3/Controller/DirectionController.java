@@ -17,7 +17,7 @@ public class DirectionController {
     @Autowired
     private DirectionRepository directionRepository;
     @Autowired
-    DirectionImp directionImp;
+    private DirectionImp directionImp;
     /**
      * endpoint: pour Lister les Direction par Id
      * @return
@@ -54,11 +54,18 @@ public class DirectionController {
      * @return
      */
 
-    @PutMapping("{id}")
-    public ResponseEntity<Direction> updateDirection(@PathVariable Long id,@RequestBody Direction direction) {
-        directionImp.updateDirection(id , direction);
-        return new ResponseEntity<Direction>(directionImp.getDirectionById(id), HttpStatus.OK);
+    @PutMapping("/{id}") // Use a proper URI pattern with curly braces
+    public ResponseEntity<Direction> updateDirection(@PathVariable Long id, @RequestBody Direction direction) {
+        Direction updatedDirection = directionImp.updateDirection(id, direction);
+        return new ResponseEntity<>(updatedDirection, HttpStatus.OK);
     }
+
+
+   /** @PutMapping("{id}")
+    public ResponseEntity<Direction> updateDirection(@PathVariable Long id,@RequestBody Direction direction) {
+       Direction updateDirection = directionImp.updateDirection(id , direction);
+        return new ResponseEntity<>(updateDirection, HttpStatus.OK );
+    } */
 
     /**
      * endpoint: pour Supprimer les Direction

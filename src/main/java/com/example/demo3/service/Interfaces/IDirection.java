@@ -12,7 +12,7 @@ public interface IDirection {
 
     public Direction getDirectionById(Long id);
 
-    public void updateDirection(Long id , Direction direction);
+    public Direction updateDirection(Long id , Direction direction);
 
     public  void deleteDirection(Long id);
 }
