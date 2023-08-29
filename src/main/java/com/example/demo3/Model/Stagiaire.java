@@ -1,5 +1,6 @@
 package com.example.demo3.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.grammars.hql.HqlParser;
@@ -23,6 +24,11 @@ public class Stagiaire {
     private Long cin;
     @Column(name = "nTelephone")
     private Long numberphone;
+
+
+    @ManyToOne()
+    private Stage stage;
+
 
 
 }

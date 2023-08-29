@@ -1,13 +1,10 @@
 package com.example.demo3.Controller;
-
 import com.example.demo3.Model.Service;
-import com.example.demo3.Repository.ServiceRepository;
-import com.example.demo3.service.Classes.ServiceImp;
+import com.example.demo3.service.Interfaces.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -15,9 +12,7 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/Service")
 public class ServiceController {
     @Autowired
-    private ServiceRepository serviceRepository;
-    @Autowired
-    ServiceImp serviceImp;
+    private IService iService;
 
     /**
      * endpoint: pour lister les Services
@@ -25,7 +20,7 @@ public class ServiceController {
      */
     @GetMapping
     public List<Service> getAllService() {
-        return serviceImp.getAllService();
+        return iService.getAllService();
     }
 
     /**
@@ -34,7 +29,7 @@ public class ServiceController {
      */
     @PostMapping
     public Service createService(@RequestBody Service service){
-        Service service1 = serviceImp.save(service);
+        Service service1 = iService.save(service);
         return  service1;
     }
 
@@ -43,10 +38,9 @@ public class ServiceController {
      * @return
      */
     @GetMapping("{id}")
-    public ResponseEntity<Service> getServiceById(@PathVariable Long id) {
-        Service service = serviceRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found"));
-        return  ResponseEntity.ok(service);
+    public Service getServiceById(@PathVariable Long id) {
+        Service service = iService.getServiceById(id);
+        return  service;
     }
 
     /**
@@ -54,15 +48,20 @@ public class ServiceController {
      * @return
      */
     @PutMapping("{id}")
-    public ResponseEntity<Service> updateService(@PathVariable Long id,@RequestBody Service serviceDetails) {
-        Service updateService = serviceRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found"));
+    public ResponseEntity<Service> updateService(@PathVariable Long id,@RequestBody Service service){
+        Service updateService = iService.updateService(id, service);
 
-        serviceDetails.setNomservice(serviceDetails.getNomservice());
-        serviceDetails.setNomdepartement(serviceDetails.getNomdepartement());
-
-        serviceRepository.save(updateService);
-        return ResponseEntity.ok(updateService);
+        return new ResponseEntity<>(updateService,HttpStatus.OK);
     }
+
+    /**
+     * endpoint: pour Supprimer les Service
+     * @return
+     */
+    @DeleteMapping("{id}")
+    public void deleteService(@PathVariable Long id){
+        iService.deleteService(id);
+    }
+
 
 }

@@ -1,7 +1,11 @@
 package com.example.demo3.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +20,20 @@ public class Service {
     @Column(name = "nomService")
     private String nomservice;
 
-    @Column(name = "nomDepartement")
-    private String nomdepartement;
+
+   /** @ManyToOne()
+    private Stage stage; */
+
+    @OneToMany(mappedBy = "service",fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Stage> stage = new ArrayList<Stage>();
+
+
+   /** @OneToMany(mappedBy = "service",fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Departement> departement = new ArrayList<Departement>(); */
+
+   @ManyToOne()
+   private Departement departement;
+
 }

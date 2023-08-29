@@ -10,4 +10,10 @@ public interface IService {
     public List<Service> getAllService ();
 
     public Service save(Service service);
+
+    public Service updateService(Long id, Service service);
+
+    public  void deleteService(Long id);
+
+    Service getServiceById(Long id);
 }

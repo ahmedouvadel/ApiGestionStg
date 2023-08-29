@@ -2,8 +2,7 @@ package com.example.demo3.Controller;
 
 
 import com.example.demo3.Model.Direction;
-import com.example.demo3.Repository.DirectionRepository;
-import com.example.demo3.service.Classes.DirectionImp;
+import com.example.demo3.service.Interfaces.IDirection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/api/v1/Direction")
 public class DirectionController {
+
     @Autowired
-    private DirectionRepository directionRepository;
-    @Autowired
-    private DirectionImp directionImp;
+    private IDirection iDirection;
     /**
      * endpoint: pour Lister les Direction par Id
      * @return
@@ -25,7 +23,7 @@ public class DirectionController {
 
     @GetMapping
     public List<Direction> getAllDirection() {
-        return directionImp.getAllDirection();
+        return iDirection.getAllDirection();
     }
 
     /**
@@ -34,7 +32,7 @@ public class DirectionController {
      */
     @PostMapping
     public Direction CreateDirection(@RequestBody Direction direction) {
-        Direction direction1 = directionImp.save(direction);
+        Direction direction1 = iDirection.save(direction);
         return direction1;
     }
 
@@ -45,7 +43,7 @@ public class DirectionController {
 
     @GetMapping("{id}")
     public Direction getDirectionById(@PathVariable Long id) {
-        Direction direction = directionImp.getDirectionById(id);
+        Direction direction = iDirection.getDirectionById(id);
         return direction;
     }
 
@@ -56,7 +54,7 @@ public class DirectionController {
 
     @PutMapping("/{id}") // Use a proper URI pattern with curly braces
     public ResponseEntity<Direction> updateDirection(@PathVariable Long id, @RequestBody Direction direction) {
-        Direction updatedDirection = directionImp.updateDirection(id, direction);
+        Direction updatedDirection = iDirection.updateDirection(id, direction);
         return new ResponseEntity<>(updatedDirection, HttpStatus.OK);
     }
 
@@ -74,7 +72,7 @@ public class DirectionController {
 
     @DeleteMapping("{id}")
     public  void deleteDirection(@PathVariable Long id){
-        directionImp.deleteDirection(id);
+        iDirection.deleteDirection(id);
     }
 
 }

@@ -13,20 +13,40 @@ import java.util.List;
 public class DirectionImp implements IDirection {
     @Autowired
     private DirectionRepository directionRepository;
+
+    /**
+     * endpoint: Methode pour Lister les Directions
+     * @return
+     */
     @Override
     public List<Direction> getAllDirection() {
         return directionRepository.findAll();
     }
+
+    /**
+     * endpoint: Methode pour Create les Services
+     * @return
+     */
     @Override
     public Direction save(Direction direction) {
         return directionRepository.save(direction);
     }
+
+    /**
+     * endpoint: Methode pour Lister les Directions par Id
+     * @return
+     */
 
     @Override
     public Direction getDirectionById(Long id) {
         return directionRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found"));
     }
+
+    /**
+     * endpoint: Methode pour Modifier les Direction
+     * @return
+     */
     @Override
     public Direction updateDirection(Long id, Direction direction) {
         Direction existingDirection = directionRepository.findById(id)
@@ -45,6 +65,11 @@ public class DirectionImp implements IDirection {
 
         directionRepository.save(updateDirection);
     } */
+
+    /**
+     * endpoint: Methode pour Supprimer les Direction
+     * @return
+     */
 
     @Override
     public void deleteDirection(Long id) { directionRepository.deleteById(id);

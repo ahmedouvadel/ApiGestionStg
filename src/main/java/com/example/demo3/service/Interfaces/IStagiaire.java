@@ -12,4 +12,9 @@ public interface IStagiaire {
     public Stagiaire save(Stagiaire stagiaire);
 
      public Stagiaire getStagiaireById(UUID id);
+
+     public Stagiaire  updateStagiaire(UUID id, Stagiaire stagiaire);
+
+     public  void deleteStagiaire(UUID id);
+
 }

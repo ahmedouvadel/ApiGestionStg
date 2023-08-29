@@ -11,4 +11,10 @@ public interface IStage {
     public Stage save(Stage stage);
 
     public Stage getStageById(Long id);
+
+    public Stage updateStage(Long id, Stage stage);
+
+    public  void deleteStage(Long id);
+
+
 }
