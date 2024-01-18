@@ -1,6 +1,4 @@
 package com.example.demo3.service.Classes;
-
-import com.example.demo3.Model.Direction;
 import com.example.demo3.Model.Stagiaire;
 import com.example.demo3.Repository.StagiaireRepository;
 import com.example.demo3.service.Interfaces.IStagiaire;
@@ -57,6 +55,9 @@ public class StagiaireImp implements IStagiaire {
         existingStagiaire.setFirstname(stagiaire.getFirstname());
         existingStagiaire.setLastname(stagiaire.getLastname());
         existingStagiaire.setCin(stagiaire.getCin());
+        existingStagiaire.setDatedeb(stagiaire.getDatedeb());
+        existingStagiaire.setDatefin(stagiaire.getDatefin());
+        existingStagiaire.setNbadge(stagiaire.getNbadge());
         existingStagiaire.setNumberphone(stagiaire.getNumberphone());
 
         return stagiaireRepository.save(existingStagiaire); // Save and return the updated entity

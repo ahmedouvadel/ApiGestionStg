@@ -22,12 +22,18 @@ public class Stagiaire {
     private String lastname;
     @Column(name = "CIN")
     private Long cin;
+    @Column(name = "dateDebut")
+    private LocalDate datedeb;
+    @Column(name = "dateFin")
+    private LocalDate datefin;
+    @Column(name = "nBadge")
+    private  Integer nbadge;
     @Column(name = "nTelephone")
     private Long numberphone;
 
 
     @ManyToOne()
-    private Stage stage;
+    private Service service;
 
 
 

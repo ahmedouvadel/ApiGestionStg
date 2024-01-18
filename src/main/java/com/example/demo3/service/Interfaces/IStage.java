@@ -1,4 +1,4 @@
-package com.example.demo3.service.Interfaces;
+/**package com.example.demo3.service.Interfaces;
 
 import com.example.demo3.Model.Stage;
 
@@ -18,3 +18,4 @@ public interface IStage {
 
 
 }
+ */

@@ -1,4 +1,4 @@
-package com.example.demo3.Model;
+/**package com.example.demo3.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -36,8 +36,8 @@ public class Stage {
 
    /**  @OneToMany(mappedBy = "stage",fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Service> service = new ArrayList<Service>(); */
+    private List<Service> service = new ArrayList<Service>();
 
 
 
-}
+}  */

@@ -26,7 +26,7 @@ public class Service {
 
     @OneToMany(mappedBy = "service",fetch = FetchType.LAZY)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private List<Stage> stage = new ArrayList<Stage>();
+    private List<Stagiaire> stage = new ArrayList<Stagiaire>();
 
 
    /** @OneToMany(mappedBy = "service",fetch = FetchType.LAZY)

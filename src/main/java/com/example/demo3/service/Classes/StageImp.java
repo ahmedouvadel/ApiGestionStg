@@ -1,4 +1,4 @@
-package com.example.demo3.service.Classes;
+/** package com.example.demo3.service.Classes;
 
 import com.example.demo3.Model.Stage;
 import com.example.demo3.Repository.StageRepository;
@@ -16,10 +16,10 @@ public class StageImp implements IStage {
     @Autowired
     private StageRepository stageRepository;
 
-    /**
+
      * endpoint: Methode pour Lister les Stages
      * @return
-     */
+
     public List<Stage> getAllStage() {
        return stageRepository.findAll();
     }
@@ -27,7 +27,7 @@ public class StageImp implements IStage {
     /**
      * endpoint: Methode pour Create les Stages
      * @return
-     */
+
     @Override
     public Stage save(Stage stage) {
         return stageRepository.save(stage);
@@ -36,7 +36,7 @@ public class StageImp implements IStage {
     /**
      * endpoint: Methode pour Lister les Stages par Id
      * @return
-     */
+
 
     @Override
     public Stage getStageById(Long id) {
@@ -47,7 +47,7 @@ public class StageImp implements IStage {
     /**
      * endpoint: Methode pour Modifier les Stages
      * @return
-     */
+
     @Override
     public Stage updateStage(Long id, Stage stage) {
         Stage existingStage = stageRepository.findById(id).orElseThrow(() ->
@@ -63,10 +63,10 @@ public class StageImp implements IStage {
     /**
      * endpoint: Methode pour Supprimer les Stages
      * @return
-     */
+
 
     @Override
     public void deleteStage(Long id) {
         stageRepository.deleteById(id);
     }
-}
+}   */

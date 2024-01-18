@@ -1,4 +1,4 @@
-package com.example.demo3.Controller;
+/** package com.example.demo3.Controller;
 import com.example.demo3.Model.Stage;
 import com.example.demo3.service.Interfaces.IStage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class StageController {
     /**
      * endpoint: pour lister les Stages
      * @return
-     */
+
 
     @GetMapping
     public List<Stage> getAllStage( Long id) {
@@ -26,7 +26,7 @@ public class StageController {
     /**
      * endpoint: pour Ajouter les Stages
      * @return
-     */
+
 
 
     @PostMapping
@@ -38,7 +38,7 @@ public class StageController {
     /**
      * endpoint: pour Lister les Stages Par Id
      * @return
-     */
+
     @GetMapping("{id}")
     public Stage getStageById(@PathVariable Long id){
         Stage stage = iStage.getStageById(id);
@@ -48,7 +48,7 @@ public class StageController {
     /**
      * endpoint: pour Modifier les Stages
      * @return
-     */
+
     @PutMapping("{id}")
     public ResponseEntity<Stage> updateStage(@PathVariable Long id,@RequestBody Stage stage){
         Stage updateStage = iStage.updateStage(id, stage);
@@ -60,7 +60,7 @@ public class StageController {
     /**
      * endpoint: pour Supprimer les Stages
      * @return
-     */
+
     @DeleteMapping("{id}")
     public  void deleteStage(@PathVariable  Long id){
         iStage.deleteStage(id);
@@ -70,4 +70,4 @@ public class StageController {
 
 
 
-}
+} */
